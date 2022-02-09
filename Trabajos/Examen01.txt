@@ -1,0 +1,112 @@
+/*
+Sudoku Cuadrado
+
+Cada bloque es de size n x n, por lo tanto la matriz sera n^2 x n^2 con n^2 bloques
+
+El jugador debe encontrar los numeros que faltan sin que se repitan numeros en ninguna fila, columna o bloque.
+
+El programa recibe el valor de "n" en entrada estandar
+
+Hay 4 veredictos:
+
+Solved: Un tablero que en todas su celdas tenga numeros que cumplan las reglas, print "solved"
+
+Valid: Un tablero que se pueda completar, incluye tableros vacios, print "valid"
+
+Invalid: Un tablero que incumpla con una o mas reglas logicas del juego, se debe imprimir la coordenada del valor reiterado
+'r' para fila, 'c' para columba o 'b' para bloque y por sencillez solo se imprimen los consecuentes numeros, no el original.
+
+Error: Para cuando se encuentren tableros incompletos o caracteres invalidos, como el 0,
+se imprime la coordenada de la celda precedida por la letra e.
+
+La evaluacion de los bloques es de izquierda a derecha, arriba a abajo.
+
+Un tablero de sudoku valido no es necesariamiente resoluble, pero el programa solo busca en fijarse si cumple con las 3 reglas logicas
+
+*/
+
+procedure Valid () do 
+
+    create n := leerEntero()
+    create tablero[][] := new entero [n^2][n^2]
+    create tableroInt[][] := new entero [n^2][n^2]
+
+    boolean solved = true;
+    boolean valid = true;
+
+    for (row = 0; row < n^2; row++)   // Se agregan datos a una matriz tipo char
+        for (col = 0; col < n^2; col++)
+            tablero [row][col] = nextChar
+        end
+    end
+
+    for (row = 0; row < n^2; row++)   // Si hay un espacio vacio o punto, entonces no esta resuelto
+        for (col = 0; col < n^2; col++)
+            if (tablero[row][col] == '.' or == ' ')
+                solved = false;
+        end
+    end
+
+    for (row = 0; row < n^2; row++) // Ciclo para revisar si son numeros, si hay algun no numero se imprime la coordenada y se cierra el programa
+        for (col = 0; col < n^2; col++)
+            boolean error = tablero[row][col].isDigit
+                if (error = true or tablero[row][col] == '.')
+                    continue
+                else 
+                    print "e row, col"
+                    Exit
+        end
+    end
+
+    for (row = 0; row < n^2; row++)   // Se convierte el tablero original a un tablero INT, para facilitar las comparaciones
+        for (col = 0; col < n^2; col++)
+            if (tablero[row][col] == '.')
+                tableroInt[row][col] = 0
+            else
+                tableroInt[row][col] = tablero[row][col] 
+        end
+    end
+
+    for (row = 0; row < n^2; row++) // Ciclar por las filas
+        for (col = 0; col < n^2; col++)
+            for (x = col + 1; x < n^2; x++)
+                if (tableroInt[row][col] != 0 and == tableroInt[row][x])
+                print "r row+1, x+1"
+                valid = false;
+            end
+        end
+    end
+
+    for (row = 0; row < n^2; row++) // Ciclar por las columnas
+        for (col = 0; col < n^2; col++)
+            for (x = row + 1; x < n^2; x++)
+                if (tableroInt[row][col] != 0 and == tableroInt[x][col])
+                print "r x+1, col+1"
+                valid = false;
+            end
+        end
+    end
+
+
+    for (bloquesRow = 0; bloquesRow <= n; bloquesRow++)
+        for (bloquesCol = 0; bloquesCol <= n; bloquesCol++)
+            for (row = 0; row < n)
+
+
+
+    if (solved and valid == true)   //Si todos los inputs son digitos y son validos, entonces se imprime resuelto
+        print "solved"
+        Exit
+    else if ( valid == true)    //Si el tablero es valido, se imprime valid
+        print "valid"
+
+
+    
+    
+    
+                
+
+
+
+
+

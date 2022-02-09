@@ -1,0 +1,4 @@
+           Victoria: Si
+              Cajas: r01c05* r04c05* r05c01* r07c05*
+   Cajas Bloqueadas:
+Movimientos válidos: N:- E:r01c02 S:r02c01 O:-
