@@ -1,6 +1,7 @@
 package com.gradle.sokoban;
 import java.util.*;
 import java.io.*;
+import java.lang.*;
 
 
 public class Sokoban
@@ -19,10 +20,10 @@ public class Sokoban
       int filas = this.input.nextInt();
       int columnas = this.input.nextInt();
       int cajas = this.input.nextInt();
-      char[][] tablero = new char[filas][columnas];
+      String[][] tablero = new String[filas][columnas];
       for (int indexFila = 0; indexFila < filas; indexFila++) {
         for (int indexColumna = 0; indexColumna < columnas; indexColumna++) {
-          tablero[indexFila][indexColumna] = this.input.next().charAt(0);
+          tablero[indexFila][indexColumna] = this.input.next();
         }
       }
 
@@ -31,16 +32,16 @@ public class Sokoban
     }
 
     public void posicionCajas(int filas, int columnas, int cajas,
-                              char[][] tablero) {
+                              String[][] tablero) {
       String[] coordenadasCajas = new String[cajas];
       int contadorCoordenadas = 0;
       for (int indexFila = 0; indexFila < filas; indexFila++) {
         for (int indexColumna = 0; indexColumna < columnas; indexColumna++) {
-          if (tablero[indexFila][indexColumna].equals('X')) {
+          if (tablero[indexFila][indexColumna].equals("X")) {
             coordenadasCajas[contadorCoordenadas] =
                 String.format("r0%dc0%d* " ,indexFila, indexColumna);
             contadorCoordenadas++;
-          } else if (tablero[indexFila][indexColumna].equals('*')) {
+          } else if (tablero[indexFila][indexColumna].equals("*")) {
             coordenadasCajas[contadorCoordenadas] =
                 String.format("r0%dc0%d " ,indexFila, indexColumna);
             contadorCoordenadas++;
