@@ -95,19 +95,53 @@ public class Sokoban
     }
 
 
-
-
-
+  /**
+   * Método donde se recorre la matriz para encontrar las posiciones en las que
+   * están las cajas y guarda sus posiciones, estén resueltas o no.
+   *
+   * @param filas Recibe un parámetro de tipo {@code int} que indica el número
+   *              de filas de la matriz donde se almacenan los caracteres del
+   *              tablero.
+   * @param columnas Recibe un parámetro de tipo {@code int} que indica el
+   *                 número de filas de la matriz donde se almacenan los
+   *                 caracteres del tablero.
+   * @param cajas Recibe un parámetro de tipo {@code int} que indica el número
+   *              de cajas que hay en el tablero.
+   * @param tablero Recibe una matriz de tipo {@code String[][]} que contiene
+   *                los caracteres del tablero.
+   */
     public void posicionCajas(int filas, int columnas, int cajas,
                               String[][] tablero) {
+      /**
+       * Variable que indica la creación de la matriz que almacena las
+       * posiciones donde se ubican las cajas.
+       */
       String[] coordenadasCajas = new String[cajas];
+      /**
+       * Variable cuyo valor empieza en 0, pero aumenta conforme se encuentran
+       * las posiciones en las que están las cajas.
+       */
       int contadorCoordenadas = 0;
+      /**
+       * Dos ciclos for: el primero de filas y el segundo de columnas, en donde
+       * se recorre la matriz en busca de las posiciones donde están las cajas.
+       */
       for (int indexFila = 0; indexFila < filas; indexFila++) {
         for (int indexColumna = 0; indexColumna < columnas; indexColumna++) {
+          /**
+           * Si se llega a la "X" que es una posición de una caja ya resuelta,
+           * esa posición se guarda en un vector de strings con el formato:
+           * "r0%dc0%d*" y aumenta en 1 la variable "contadorCoordenadas".
+           */
           if (tablero[indexFila][indexColumna].equals("X")) {
             coordenadasCajas[contadorCoordenadas] =
                 String.format("r0%dc0%d* " ,indexFila, indexColumna);
             contadorCoordenadas++;
+            /**
+             * Si se llega a la "*" que es una posición de una caja ya resuelta,
+             * esa posición se guarda en un vector de strings con el formato:
+             * "r0%dc0%d" y aumenta en 1 la variable "contadorCoordenadas".
+             */
           } else if (tablero[indexFila][indexColumna].equals("*")) {
             coordenadasCajas[contadorCoordenadas] =
                 String.format("r0%dc0%d " ,indexFila, indexColumna);
@@ -115,6 +149,14 @@ public class Sokoban
           }
         }
       }
+
+      /**
+       * Invocación del método posicionJugador, que recibe los parámetros:
+       * "filas", "columnas", "cajas", "tablero", "contadorCoordenadas" y
+       * "coordenadasCajas".
+       */
+      posicionJugador(filas, columnas, cajas, tablero, contadorCoordenadas,
+          coordenadasCajas);
 
     }
 }
