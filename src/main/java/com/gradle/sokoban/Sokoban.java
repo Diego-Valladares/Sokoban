@@ -3,9 +3,18 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-
+/**
+ * Clase que indica si existe o no victoria, las posiciones de las cajas, ya
+ * sea resueltas o no, así como si están bloqueadas; también se indica si es
+ * posible que el jugador se mueva hacia cada uno de los puntos cardinales y la
+ * posición en ese punto cardinal hacia la que se puede mover, según las reglas
+ * de Sokoban.
+ */
 public class Sokoban
 {
+  /**
+   * Obtiene datos de la entrada estándar.
+   */
  private Scanner input = null;
 
     public static void main (String[] args) {
