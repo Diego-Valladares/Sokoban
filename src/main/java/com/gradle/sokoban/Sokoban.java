@@ -159,6 +159,27 @@ public class Sokoban
           coordenadasCajas);
 
     }
+
+
+  public void posicionJugador(int filas, int columnas, int cajas,
+                            String[][] tablero, int contadorCoordenadas,
+                            String[] coordenadasCajas ) {
+
+    int filasJugador = 0;
+    int columnasJugador = 0;
+
+    for (int indexFila = 0; indexFila < filas; indexFila++) {
+      for (int indexColumna = 0; indexColumna < columnas; indexColumna++) {
+
+        if (tablero[indexFila][indexColumna].equals("@")) {
+          filasJugador = indexFila;
+          columnasJugador = indexColumna;
+        }
+      }
+    }
+
+
+  }
 }
 
 
