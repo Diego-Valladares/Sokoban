@@ -160,17 +160,53 @@ public class Sokoban
 
     }
 
-
+  /**
+   * Método donde se recorre la matriz para encontrar la posición en la que
+   * está el jugador.
+   *
+   * @param filas Recibe un parámetro de tipo {@code int} que indica el número
+   *              de filas de la matriz donde se almacenan los caracteres del
+   *              tablero.
+   * @param columnas Recibe un parámetro de tipo {@code int} que indica el
+   *                 número de filas de la matriz donde se almacenan los
+   *                 caracteres del tablero.
+   * @param cajas Recibe un parámetro de tipo {@code int} que indica el número
+   *              de cajas que hay en el tablero.
+   * @param tablero Recibe una matriz de tipo {@code String[][]} que contiene
+   *                los caracteres del tablero.
+   * @param contadorCoordenadas Recibe una variable de tipo {@code int} que
+   *                            indica la cantidad de posiciones de cajas y
+   *                            coincide con el número de cajas.
+   * @param coordenadasCajas Recibe un arreglo de tipo {@code String[][]} que
+   *                         posee las coordenadas de las cajas en el formato
+   *                         con el que se deben imprimir al final.
+   */
   public void posicionJugador(int filas, int columnas, int cajas,
                             String[][] tablero, int contadorCoordenadas,
                             String[] coordenadasCajas ) {
-
+    /**
+     * Variable que inicia en 0 y se usará para guardar el número de la fila en
+     * la que está el jugador.
+     */
     int filasJugador = 0;
+    /**
+     * Variable que inicia en 0 y se usará para guardar el número de la columna
+     * en la que está el jugador.
+     */
     int columnasJugador = 0;
-
+    /**
+     * Dos ciclos for: el primero de filas y el segundo de columnas, en donde
+     * se recorre la matriz en busca de las posiciones donde está el jugador.
+     */
     for (int indexFila = 0; indexFila < filas; indexFila++) {
       for (int indexColumna = 0; indexColumna < columnas; indexColumna++) {
-
+        /**
+         * Si se llega a la "@" que es una posición del jugador, esa posición se
+         * guarda usando las variables "filasJugador" y "columnasJugador" en
+         * donde "filasJugador" almacena el número de fila donde está el
+         * jugador y en donde "columnasJugador" guarda el número de columna
+         * donde está el jugador.
+         */
         if (tablero[indexFila][indexColumna].equals("@")) {
           filasJugador = indexFila;
           columnasJugador = indexColumna;
