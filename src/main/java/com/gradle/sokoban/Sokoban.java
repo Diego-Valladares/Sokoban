@@ -40,6 +40,10 @@ public class Sokoban
       input.close();
     }
 
+
+
+
+
     public void posicionCajas(int filas, int columnas, int cajas,
                               String[][] tablero) {
       String[] coordenadasCajas = new String[cajas];
