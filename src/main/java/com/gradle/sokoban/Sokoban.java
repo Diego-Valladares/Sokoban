@@ -4,6 +4,18 @@ import java.io.*;
 import java.lang.*;
 
 /**
+ * Para ejecutar el programa abra la carpeta "libs" (Sokoban\build\libs\) utilizando la consola.
+ * En windows seria: Boton windows + R
+ *                  Escribir cmd.exe y luego run
+ *                  Escribir dentro de la consola "cd ..\Sokoban\build\libs"
+ *
+ * Luego escribir el comando "java -jar Sokoban-1.0.jar < ../../tests/input000.txt"
+ * Esto ejecutara el caso de prueba deseado.
+ * Si tiene problemas al ejecutar el codigo puede ser que su JDK ocupe actualizar.
+ */
+
+
+/**
  * Clase que indica si existe o no victoria, las posiciones de las cajas, ya
  * sea resueltas o no, así como si están bloqueadas; también se indica si es
  * posible que el jugador se mueva hacia cada uno de los puntos cardinales y la
@@ -11,13 +23,15 @@ import java.lang.*;
  * de Sokoban.
  */
 
-public class Sokoban {
+public class Sokoban{
 
   /**
    * Método que arranca el programa.
    *
    * @param args argumentos del programa.
    */
+
+  Scanner input = null;
 
   public static void main(String[] args) {
 
@@ -74,30 +88,13 @@ public class Sokoban {
      * Si el programa detecta y lee los datos con exito, continua.
      */
 
-    try {
-      /**
-       * NOTA: La direccion de los casos de prueba del programa muy
-       *       probablemente sea diferente a la de sucomputadora.
-       *       Para arreglar esto, simplemente consiga la direccion del folder "Sokoban",
-       *       por ejemplo: "DISK:\\Users\\USER\\Desktop\\Sokoban\\tests\\input001.txt"
-       *       y reemplaze el contenido de "new File ("LO QUE ESTA AQUI")"
-       *       con su direccion del caso de prueba.
-       */
 
 
       /**
-       * Crea un archivo interno con el contenido del caso de prueba.
+       * Lee los archivos de la entrada estandar.
        */
 
-      File doc = new File(
-          "C:\\Users\\diego\\Desktop\\Things\\Educacion\\UCR\\Verano_Year1\\Sokoban\\tests\\input008.txt");
-
-
-      /**
-       * Lee los datos del archivo interno.
-       */
-
-      Scanner input = new Scanner(doc);
+      input = new Scanner(System.in);
 
       /**
        * Se toman los valores "int" al principio del archivo.
@@ -179,17 +176,10 @@ public class Sokoban {
        * Cierra el input debido a que ya no se necesita.
        */
       input.close();
-    }
 
     /**
      * Si el programa no detecta un archivo .txt valido imprime un mensaje de error.
      */
-
-    catch (FileNotFoundException err) {
-      System.out.println("Input file not found.");
-      err.printStackTrace();
-      System.exit(0);
-    }
 
     System.out.println("");
     condicionVictoria(filas, columnas, cajas, tablero);
