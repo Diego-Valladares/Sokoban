@@ -585,7 +585,8 @@ public class Sokoban{
    * @param tablero Recibe una matriz de tipo {@code String[][]} que contiene
    *                los caracteres del tablero.
    */
-  public void condicionVictoria (int filas, int columnas, int cajas, String [][] tablero) {
+  public void condicionVictoria (int filas, int columnas, int cajas,
+                                 String [][] tablero) {
     /**
      * Variable que identifica si la condición para que el jugador gane el
      * juego es verdadera o falsa(empieza siendo verdadera).
