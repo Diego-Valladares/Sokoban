@@ -384,8 +384,9 @@ public class Sokoban{
   }
 
   /**
-   * Metodo donde se recorre la matriz para encontrar la posicion del jugador, y luego
-   * fijarse en cuales movimientos (NORTE, ESTE, SUR, OESTE; en ese orden) son validos.
+   * Método donde se recorre la matriz para encontrar la posición del jugador,
+   * y luego fijarse en cuáles movimientos (NORTE, ESTE, SUR, OESTE; en ese
+   * orden) son válidos.
    *
    * @param filas Recibe un parámetro de tipo {@code int} que indica el número
    *              de filas de la matriz donde se almacenan los caracteres del
@@ -399,7 +400,8 @@ public class Sokoban{
    *                los caracteres del tablero.
    */
 
-  public void movimientosValidos (int filas, int columnas, int cajas, String[][] tablero){
+  public void movimientosValidos (int filas, int columnas, int cajas,
+                                  String[][] tablero){
 
     /**
      * Variable que crea un arreglo donde se almacenarán las coordenadas de los
@@ -485,7 +487,8 @@ public class Sokoban{
            * de esa, se guarda "-" en el arreglo "movimientosVal" y, sino se
            * guarda la ubicación con el formato de salida.
            */
-          if ((tablero[row - 1][col].equals("*") || tablero[row-1][col].equals("X"))
+          if ((tablero[row - 1][col].equals("*")
+              || tablero[row-1][col].equals("X"))
               && (tablero[row-2][col].equals("*")
               || tablero[row-2][col].equals("X")
               || tablero[row-2][col].equals("#")) ){
@@ -504,7 +507,8 @@ public class Sokoban{
            * "movimientosVal" y, sino se guarda la ubicación con el formato de
            * salida.
            */
-          if ((tablero[row ][col+1].equals("*") || tablero[row][col+1].equals("X"))
+          if ((tablero[row ][col+1].equals("*")
+              || tablero[row][col+1].equals("X"))
               && (tablero[row][col+2].equals("*")
               || tablero[row][col+2].equals("X")
               || tablero[row][col+2].equals("#")) ){
@@ -522,7 +526,8 @@ public class Sokoban{
            * de esa, se guarda "-" en el arreglo "movimientosVal" y, sino se
            * guarda la ubicación con el formato de salida.
            */
-          if ((tablero[row + 1][col].equals("*") || tablero[row+1][col].equals("X"))
+          if ((tablero[row + 1][col].equals("*")
+              || tablero[row+1][col].equals("X"))
               && (tablero[row+2][col].equals("*")
               || tablero[row+2][col].equals("X")
               || tablero[row+2][col].equals("#"))){
@@ -541,7 +546,8 @@ public class Sokoban{
            * "movimientosVal" y, sino se guarda la ubicación con el formato de
            * salida.
            */
-          if ((tablero[row][col-1].equals("*") || tablero[row][col-1].equals("X"))
+          if ((tablero[row][col-1].equals("*")
+              || tablero[row][col-1].equals("X"))
               && (tablero[row][col-2].equals("*")
               || tablero[row][col-2].equals("X")
               || tablero[row][col-2].equals("#"))){
@@ -559,8 +565,9 @@ public class Sokoban{
      * Se imprimen las coordenadas o guiones del arreglo "movimientosVal"
      * correspondientes a cada punto cardinal.
      */
-    System.out.printf("Movimientos Validos: N:%s E:%s S:%s O:%s",movimientosVal[0],movimientosVal[1],
-        movimientosVal[2], movimientosVal[3]);
+    System.out.printf("Movimientos Validos: N:%s E:%s S:%s O:%s",
+        movimientosVal[0],movimientosVal[1], movimientosVal[2],
+        movimientosVal[3]);
   }
 
   /**
