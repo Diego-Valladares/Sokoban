@@ -388,12 +388,25 @@ public class Sokoban{
 
   public void movimientosValidos (int filas, int columnas, int cajas, String[][] tablero){
 
-    String [] movimientosVal = new String[4]; // Hay cuatro direcciones que tomar en cuenta nada mas.
-
-    for (int row = 0; row < filas; row++){  //Orden de direccion: ARRIBA DERECHA ABAJO IZQUIERDA
+    /**
+     * Variable que crea un arreglo donde se almacenarán las coordenadas de los
+     * 4 puntos cardinales hacia las que se podría mover el jugador; si no es
+     * posible que se mueva a algún punto, se almacena "-".
+     */
+    String [] movimientosVal = new String[4];
+    /**
+     * Doble ciclo for que recorre la matriz y, si se encuentra el símbolo "@",
+     * que identifica al jugador, procede con el siguiente con el if de debajo.
+     */
+    for (int row = 0; row < filas; row++){
       for (int col = 0; col < columnas; col++){
         if (tablero[row][col].equals("@")){
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente superior a
+           * la posición del jugador, si lo que tiene almacenado es igual a ".",
+           * "O", "X" o "*", se guardan sus coordenadas con el formato de salida
+           * en el arreglo "movimientosVal"; si esto no se da, se guarda "-".
+           */
           if (tablero[row-1][col].equals(".")
               || tablero[row-1][col].equals("O")
               || tablero[row-1][col].equals("X")
@@ -403,7 +416,13 @@ public class Sokoban{
           else{
             movimientosVal[0] = "-";
           }
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente a la derecha
+           * de la posición del jugador, si lo que tiene almacenado es igual a
+           * ".", "O", "X" o "*", se guardan sus coordenadas con el formato de
+           * salida en el arreglo "movimientosVal"; si esto no se da, se guarda
+           * "-".
+           */
           if (tablero[row][col+1].equals(".")
               || tablero[row][col+1].equals("O")
               || tablero[row][col+1].equals("X")
@@ -413,7 +432,12 @@ public class Sokoban{
           else{
             movimientosVal[1] = "-";
           }
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente inferior a
+           * la posición del jugador, si lo que tiene almacenado es igual a ".",
+           * "O", "X" o "*", se guardan sus coordenadas con el formato de salida
+           * en el arreglo "movimientosVal"; si esto no se da, se guarda "-".
+           */
           if (tablero[row+1][col].equals(".")
               || tablero[row+1][col].equals("O")
               || tablero[row+1][col].equals("X")
@@ -423,7 +447,13 @@ public class Sokoban{
           else{
             movimientosVal[2] = "-";
           }
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente a la
+           * izquierda de la posición del jugador, si lo que tiene almacenado es
+           * igual a ".", "O", "X" o "*", se guardan sus coordenadas con el
+           * formato de salida en el arreglo "movimientosVal"; si esto no se da,
+           * se guarda "-".
+           */
           if (tablero[row][col-1].equals(".")
               || tablero[row][col-1].equals("O")
               || tablero[row][col-1].equals("X")
@@ -433,7 +463,15 @@ public class Sokoban{
           else{
             movimientosVal[3] = "-";
           }
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente superior a
+           * la de la del jugador y la que está encima de esta, donde "*" es una
+           * caja no resuelta, "X" es una resuelta y "#" es una pared del borde
+           * del tablero; si alguno de estos ocupa la posición inmediatamente
+           * superior a la del jugador, y se da lo mismo con la posición encima
+           * de esa, se guarda "-" en el arreglo "movimientosVal" y, sino se
+           * guarda la ubicación con el formato de salida.
+           */
           if ((tablero[row - 1][col].equals("*") || tablero[row-1][col].equals("X"))
               && (tablero[row-2][col].equals("*")
               || tablero[row-2][col].equals("X")
@@ -443,7 +481,16 @@ public class Sokoban{
           else{
             movimientosVal[0] = String.format("r%02dc%02d ",row-1, col);
           }
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente a la derecha
+           * a la de la del jugador y la que está encima de esta, donde "*" es
+           * una caja no resuelta, "X" es una resuelta y "#" es una pared del
+           * borde del tablero; si alguno de estos ocupa la posición
+           * inmediatamente superior a la del jugador, y se da lo mismo con la
+           * posición encima de esa, se guarda "-" en el arreglo
+           * "movimientosVal" y, sino se guarda la ubicación con el formato de
+           * salida.
+           */
           if ((tablero[row ][col+1].equals("*") || tablero[row][col+1].equals("X"))
               && (tablero[row][col+2].equals("*")
               || tablero[row][col+2].equals("X")
@@ -453,7 +500,15 @@ public class Sokoban{
           else{
             movimientosVal[1] = String.format("r%02dc%02d ",row, col+1);
           }
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente inferior a
+           * la de la del jugador y la que está encima de esta, donde "*" es una
+           * caja no resuelta, "X" es una resuelta y "#" es una pared del borde
+           * del tablero; si alguno de estos ocupa la posición inmediatamente
+           * superior a la del jugador, y se da lo mismo con la posición encima
+           * de esa, se guarda "-" en el arreglo "movimientosVal" y, sino se
+           * guarda la ubicación con el formato de salida.
+           */
           if ((tablero[row + 1][col].equals("*") || tablero[row+1][col].equals("X"))
               && (tablero[row+2][col].equals("*")
               || tablero[row+2][col].equals("X")
@@ -463,7 +518,16 @@ public class Sokoban{
           else{
             movimientosVal[2] = String.format("r%02dc%02d ",row+1, col);
           }
-
+          /**
+           * If que analiza la posición de la matriz inmediatamente a la
+           * izquierda a la de la del jugador y la que está encima de esta,
+           * donde "*" es una caja no resuelta, "X" es una resuelta y "#" es una
+           * pared del borde del tablero; si alguno de estos ocupa la posición
+           * inmediatamente superior a la del jugador, y se da lo mismo con la
+           * posición encima de esa, se guarda "-" en el arreglo
+           * "movimientosVal" y, sino se guarda la ubicación con el formato de
+           * salida.
+           */
           if ((tablero[row][col-1].equals("*") || tablero[row][col-1].equals("X"))
               && (tablero[row][col-2].equals("*")
               || tablero[row][col-2].equals("X")
@@ -478,7 +542,10 @@ public class Sokoban{
         }
       }
     }
-
+    /**
+     * Se imprimen las coordenadas o guiones del arreglo "movimientosVal"
+     * correspondientes a cada punto cardinal.
+     */
     System.out.printf("Movimientos Validos: N:%s E:%s S:%s O:%s",movimientosVal[0],movimientosVal[1],
         movimientosVal[2], movimientosVal[3]);
   }
