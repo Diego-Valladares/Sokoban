@@ -214,7 +214,8 @@ public class Sokoban{
   public void posicionCajas(int filas, int columnas, int cajas,
                             String[][] tablero) {
     /**
-     * Variable de tipo arreglo en donde se guardan las coordenadas de las cajas.
+     * Variable de tipo arreglo en donde se guardan las coordenadas de las
+     * cajas.
      */
 
     String[] coordenadasCajas = new String[cajas];
@@ -224,7 +225,7 @@ public class Sokoban{
     int contadorCoordenadas = 0;
 
     /**
-     * Ciclo en donde se recorre el tablero en busqueda de cajas.
+     * Ciclo en donde se recorre el tablero en búsqueda de cajas.
      */
 
     for (int indexFila = 0; indexFila < filas; indexFila++) {
@@ -241,8 +242,8 @@ public class Sokoban{
         }
         /**
          * Si se encuentra a la "*" que es una posición de una caja sin resolver,
-         * la coordenada se guarda en "coordenadasCajas" sin ningun caracter extra
-         * y se aumenta por 1 la variable "contadorCoordenadas".
+         * la coordenada se guarda en "coordenadasCajas" sin ningún símbolo
+         * extra y se aumenta por 1 la variable "contadorCoordenadas".
          */
         else if (tablero[indexFila][indexColumna].equals("*")) {
           coordenadasCajas[contadorCoordenadas] =
