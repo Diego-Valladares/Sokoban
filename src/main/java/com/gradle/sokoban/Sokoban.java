@@ -51,9 +51,10 @@ public class Sokoban{
   }
 
   /**
-   * Ejecuta la logica del programa; en el se busca un archivo de texto en la direccion proporcionada,
-   * si no lo encuentra imprimira un mensaje de error, de lo contrario el programa leera el contenido del
-   * archivo y con el creeara el tablero de juego, luego llamara a los metodos necesarios para resolver
+   * Ejecuta la lógica del programa; en él se busca un archivo de texto en la
+   * dirección proporcionada, si no lo encuentra imprimirá un mensaje de error,
+   * de lo contrario el programa leerá el contenido del archivo y con él creará
+   * el tablero de juego, luego llamara a los métodos necesarios para resolver
    * el problema.
    */
 
@@ -118,7 +119,8 @@ public class Sokoban{
       }
 
       /**
-       * Tambien si los valores son 0 o negativos imprime un mensaje de error y cierra el programa.
+       * También si los valores son 0 o negativos imprime un mensaje de error y
+       * cierra el programa.
        */
 
       if (filas <= 0 || columnas <= 0 || cajas <= 0){
@@ -127,13 +129,13 @@ public class Sokoban{
       }
 
       /**
-       * Delimitador para ignorar espacios en blanco o vacios.
+       * Delimitador para ignorar espacios en blanco o vacíos.
        */
 
       input.useDelimiter("[\\s]*");
 
       /**
-       * Se crea en tablero con las dimensiones validas.
+       * Se crea en tablero con las dimensiones válidas.
        */
 
       tablero = new String[filas][columnas];
@@ -159,7 +161,7 @@ public class Sokoban{
       }
 
       /**
-       * Ciclo para imprimir el tablero, asi el usuario podra visualizarlo.
+       * Ciclo para imprimir el tablero, asi el usuario podrá visualizarlo.
        */
       System.out.printf("%10s %n","Tablero");
 
@@ -178,7 +180,8 @@ public class Sokoban{
       input.close();
 
     /**
-     * Si el programa no detecta un archivo .txt valido imprime un mensaje de error.
+     * Si el programa no detecta un archivo .txt válido imprime un mensaje de
+     * error.
      */
 
     System.out.println("");
