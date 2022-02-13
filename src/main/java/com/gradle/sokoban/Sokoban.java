@@ -241,9 +241,9 @@ public class Sokoban{
           contadorCoordenadas++;
         }
         /**
-         * Si se encuentra a la "*" que es una posición de una caja sin resolver,
-         * la coordenada se guarda en "coordenadasCajas" sin ningún símbolo
-         * extra y se aumenta por 1 la variable "contadorCoordenadas".
+         * Si se encuentra a la "*" que es una posición de una caja sin
+         * resolver, la coordenada se guarda en "coordenadasCajas" sin ningún
+         * símbolo extra y se aumenta por 1 la variable "contadorCoordenadas".
          */
         else if (tablero[indexFila][indexColumna].equals("*")) {
           coordenadasCajas[contadorCoordenadas] =
@@ -265,7 +265,7 @@ public class Sokoban{
   }
 
   /**
-   * Metodo en donde se recorre el tablero para encontrar las cajas bloqueadas y
+   * Método en donde se recorre el tablero para encontrar las cajas bloqueadas y
    * luego guardarlas en un arreglo, sin contar cajas ya resueltas.
    *
    * @param filas Recibe un parámetro de tipo {@code int} que indica el número
@@ -280,7 +280,8 @@ public class Sokoban{
    *                los caracteres del tablero.
    */
 
-  public void posicionCajasBloq(int filas, int columnas, int cajas, String[][] tablero){
+  public void posicionCajasBloq(int filas, int columnas, int cajas,
+                                String[][] tablero){
 
     /**
      * Ciclo para determinar la cantidad de cajas bloqueadas en el tablero.
@@ -307,7 +308,7 @@ public class Sokoban{
     int contadorCajasBloq = 0;
 
     /**
-     * Ciclo para recorrer el tablero en busqueda de cajas bloqueadas.
+     * Ciclo para recorrer el tablero en búsqueda de cajas bloqueadas.
      */
     for (int row = 0; row < filas; row++){
       for (int col = 0; col < columnas; col++){
@@ -316,9 +317,10 @@ public class Sokoban{
          */
         if (tablero[row][col].equals("*")){
           /**
-           * Si la coordenada actual tiene una pared ARRIBA y una pared DERECHA o IZQUIERDA
-           * Significa que esta bloqueada, por lo que se agrega la coordenada al
-           * arreglo que contiene las coordenadas y se le suma 1 al contador.
+           * Si la coordenada actual tiene una pared ARRIBA y una pared DERECHA
+           * o IZQUIERDA significa que está bloqueada, por lo que se agrega la
+           * coordenada al arreglo que contiene las coordenadas y se le suma 1
+           * al contador.
            */
           if (tablero[row-1][col].equals("#")
               && (tablero[row][col+1].equals("#")
@@ -328,9 +330,10 @@ public class Sokoban{
             contadorCajasBloq++;
           }
           /**
-           * Si la coordenada actual tiene una pared ABAJO y una pared DERECHA o IZQUIERDA
-           * Significa que esta bloqueada, por lo que se agrega la coordenada al
-           * arreglo que contiene las coordenadas y se le suma 1 al contador.
+           * Si la coordenada actual tiene una pared ABAJO y una pared DERECHA
+           * o IZQUIERDA significa que está bloqueada, por lo que se agrega la
+           * coordenada al arreglo que contiene las coordenadas y se le suma 1
+           * al contador.
            */
           else if (tablero[row+1][col].equals("#")
               && (tablero[row][col+1].equals("#")
@@ -340,16 +343,22 @@ public class Sokoban{
             contadorCajasBloq++;
           }
 
-          if ((tablero[row-1][col].equals("*") || tablero[row-1][col].equals("X"))
-              && ((tablero[row][col+1].equals("*") || (tablero[row][col+1].equals("X")))
-              || (tablero[row][col-1].equals("*") || tablero[row][col-1].equals("X")))){
+          if ((tablero[row-1][col].equals("*")
+              || tablero[row-1][col].equals("X"))
+              && ((tablero[row][col+1].equals("*")
+              || (tablero[row][col+1].equals("X")))
+              || (tablero[row][col-1].equals("*")
+              || tablero[row][col-1].equals("X")))){
             coordenadaCajasBloq[contadorCajasBloq] =
                 String.format("r%02dc%02d ",row, col);
             contadorCajasBloq++;
           }
-          else if ((tablero[row+1][col].equals("*") || tablero[row+1][col].equals("X"))
-              && ((tablero[row][col+1].equals("*") || (tablero[row][col+1].equals("X")))
-              || (tablero[row][col-1].equals("*") || tablero[row][col-1].equals("X")))) {
+          else if ((tablero[row+1][col].equals("*")
+              || tablero[row+1][col].equals("X"))
+              && ((tablero[row][col+1].equals("*")
+              || (tablero[row][col+1].equals("X")))
+              || (tablero[row][col-1].equals("*")
+              || tablero[row][col-1].equals("X")))) {
             coordenadaCajasBloq[contadorCajasBloq] =
                 String.format("r%02dc%02d ", row, col);
             contadorCajasBloq++;
