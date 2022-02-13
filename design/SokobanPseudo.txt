@@ -1,0 +1,200 @@
+
+procedure run() do
+
+    create filas = leerEntero;
+    create columnas = leerEntero;
+    create cajas = leerEntero;
+    create String[][] tablero;
+
+    //Ciclo para agregar datos al tablero.
+    for (row = 0; row < filas; row ++)
+        for (col = 0; col < columnas; col++)
+            tablero[row][col] = input.next();
+
+            if (tablero [row][col] != Simbolo Valido)
+                print ("Matriz Invalida")
+                exit;
+        end
+    end
+
+    //Ciclo para imprimir el tablero
+    for (row = 0; row < filas; row ++)
+        print ("")
+        for (col = 0; col < columnas; col++)
+            print (tablero[row][col])
+        end
+    end
+
+    //Llamar a metodos de imprecion
+
+    condicionVictoria(filas, columnas, cajas, tablero);
+    posicionCajas(filas, columnas, cajas, tablero);
+    posicionCajasBloq(filas, columnas, cajas, tablero);
+    movimientosValidos(filas, columnas, cajas, tablero);
+
+end
+
+
+
+procedure posicionCajas(int filas, int columnas, int cajas, String[][] tablero) do
+    String[] coordenadasCajas = new String[cajas]
+    int contador = 0;
+
+    //Ciclo que verifica si es caja (ganadora o no)
+    for (row = 0; row < filas; row ++)
+        for (col = 0; col < columnas; col++)
+            if (tablero[row][col] == "X")
+                coordenadasCajas[contador] = "r%02dc%02d*"
+                contador++;
+            else if (tablero[row][col] == "*")
+                coordenadasCajas[contador] = "r%02dc%02d"
+                contador++;
+
+        end
+    end
+
+    //Ciclo para imprimir las coordenadas de las cajas.
+    print ("Cajas: ")
+    for (int i = 0; i < coordenadasCajas.lenght; i++)
+        print (coordenadasCajas[i])
+    end
+end
+
+
+procedure posicionCajasBloq(int filas, int columnas, int cajas, String[][] tablero) do
+    int cajasBloq = 0;
+
+    //Ciclo para contar cuantas cajas bloqueadas pueden haber
+    for (row = 0; row < filas; row ++)
+        for (col = 0; col < columnas; col++)
+            if (tablero[row][col] == "*")
+            cajasBloq++
+        end
+    end
+
+    String[] coordenadasCajasBloq = new string [cajasBloq]
+
+    int contador = 0;
+
+    //Ciclo para revisar si hay muro o cajas arriba de una caja de finalizada
+    //Solo se debe revisar (NORTE && ESTE OR OESTE) o (SUR && ESTE OR OESTE)
+    for (row = 0; row < filas; row ++)
+        for (col = 0; col < columnas; col++)
+            if (tablero[row][col] == "*")
+                if (tablero NORTE == "#" && (tablero ESTE == "#" || tablero OESTE == "#"))
+                    coordenadasCajasBloq[contador] = "r%02dc%02d"
+                    contador++;
+                else if (tablero SUR == "#" && (tablero ESTE == "#" || tablero OESTE == "#"))
+                    coordenadasCajasBloq[contador] = "r%02dc%02d"
+                    contador++;
+
+                if (tablero NORTE == "*" or "X" && (tablero ESTE == "*" or "X" 
+                                                || tablero OESTE == "*" or "X")))
+                    coordenadasCajasBloq[contador] = "r%02dc%02d"
+                    contador++;
+                else if (tablero SUR == "*" or "X" && (tablero ESTE == "*" or "X" 
+                                                || tablero OESTE == "*" or "X")))
+                    coordenadasCajasBloq[contador] = "r%02dc%02d"
+                    contador++;
+        end
+    end
+
+    for (int i = 0; i < coordenadasCajasBloq.lenght; i++)
+        if (coordenadasCajasBloq[i] == null)
+            do nothing
+        else
+            print (coordenadasCajasBloq[i])
+    end
+
+end
+
+
+procedure movimientosValidos (int filas, int columnas, int cajas, String[][] tablero) do
+    String [] movimientosVal = new String [4]
+
+    //Ciclo para fijarse en las cuatro direcciones (NORTE ESTE SUR OESTE; en ese orden)
+    //Y verificar si son validas o no.
+
+    for (int row = 0; row < filas; row++)
+        for (int col = 0; col < columnas; col++)
+            if (tablero[row][col] == "@")
+                //Primer nos fijamos en la direccion inmediata, si no es pared entonces es valido
+                if (tablero NORTE =! pared)
+                    movimientosVal[0] == cord NORTE
+                else
+                    movimientosVal[0] == "-"
+
+                if (tablero ESTE =! pared)
+                    movimientosVal[1] == cord ESTE
+                else
+                    movimientosVal[1] == "-"
+
+                if (tablero SUR =! pared)
+                    movimientosVal[2] == cord SUR
+                else
+                    movimientosVal[2] == "-"
+
+                if (tablero OESTE =! pared)
+                    movimientosVal[3] == cord OESTE
+                else
+                    movimientosVal[3] == "-"
+                
+                //Luego nos fijamos en la direccion+1, o en otras palabras la siguiente
+                //casilla en la misma direccion.
+                //Si es caja o pared entonces no es movimiento valido, ya que el jugador
+                //no puede empujar una caja si hay otra bloqueandola e igualmente con
+                //sucede con una pared.
+
+                if (tablero NORTE == caja && tablero NORTE+1 == caja o pared)
+                    movimientosVal[0] == "-"
+                else
+                    movimientosVal[0] == cord NORTE
+
+                if (tablero ESTE == caja && tablero ESTE+1 == caja o pared)
+                    movimientosVal[1] == "-"
+                else
+                    movimientosVal[1] == cord ESTE
+
+                if (tablero SUR == caja && tablero SUR+1 == caja o pared)
+                    movimientosVal[2] == "-"
+                else
+                    movimientosVal[2] == cord SUR
+
+                if (tablero OESTE == caja && tablero OESTE+1 == caja o pared)
+                    movimientosVal[3] == "-"
+                else
+                    movimientosVal[3] == cord OESTE
+                end
+            end
+        end
+    end
+
+    print "Movimientos Validos: N:movimientosVal[0]
+                                E:movimientosVal[1]
+                                S:movimientosVal[2]
+                                O:movimientosVal[3]"
+end
+
+procedure condicionVictoria (int filas, int columnas, int cajas, String[][] tablero) do
+
+    boolean victoria = true;
+    
+    //Ciclo para buscar espacios de cajas disponibles, si no encuentra, es porque probablemente
+    //los espacios ya tienen cajas, por lo que entonces el jugador gano.
+
+    for (row = 0; row < filas; row ++)
+        for (col = 0; col < columnas; col++)
+            if (tablero[row][col] == "O")
+            victoria = false;
+        end
+    end
+
+    if (victoria == false)
+        print "Victoria: NO"
+    else if (victoria == true)
+        print "Victoria: SI"    
+
+
+    
+    
+
