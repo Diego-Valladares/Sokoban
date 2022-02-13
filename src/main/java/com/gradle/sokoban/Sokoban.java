@@ -550,10 +550,31 @@ public class Sokoban{
         movimientosVal[2], movimientosVal[3]);
   }
 
+  /**
+   * Método que analiza si se cumplen las condiciones para ganar el juego según
+   * las reglas del Sokoban.
+   *
+   * @param filas Recibe un parámetro de tipo {@code int} que indica el número
+   *              de filas de la matriz donde se almacenan los caracteres del
+   *              tablero.
+   * @param columnas Recibe un parámetro de tipo {@code int} que indica el
+   *                 número de filas de la matriz donde se almacenan los
+   *                 caracteres del tablero.
+   * @param cajas Recibe un parámetro de tipo {@code int} que indica el número
+   *              de cajas que hay en el tablero.
+   * @param tablero Recibe una matriz de tipo {@code String[][]} que contiene
+   *                los caracteres del tablero.
+   */
   public void condicionVictoria (int filas, int columnas, int cajas, String [][] tablero) {
-
+    /**
+     * Variable que identifica si la condición para que el jugador gane el
+     * juego es verdadera o falsa(empieza siendo verdadera).
+     */
     boolean victoria = true;
-
+    /**
+     * Par de ciclos for que recorren la matriz del tablero del Sokoban, si se
+     * cumple la condición, la variable de victoria cambia a falsa.
+     */
     for (int row = 0; row < filas; row++) {
       for (int col = 0; col < columnas; col++) {
         if (tablero[row][col].equals("O")) {
@@ -561,7 +582,10 @@ public class Sokoban{
         }
       }
     }
-
+    /**
+     * If que indica que si la condición de victoria es falsa, se imprime
+     * "Victoria: No" y si es verdadera se imprime "Victoria: Sí".
+     */
     if (victoria == false)
       System.out.printf("%19s: %s", "Victoria", "No");
 
