@@ -3,17 +3,6 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-/**
- * Para ejecutar el programa abra la carpeta "libs" (Sokoban\build\libs\) utilizando la consola.
- * En windows seria: Boton windows + R
- *                  Escribir cmd.exe y luego run
- *                  Escribir dentro de la consola "cd ..\Sokoban\build\libs"
- *
- * Luego escribir el comando "java -jar Sokoban-1.0.jar < ../../tests/input000.txt"
- * Esto ejecutara el caso de prueba deseado.
- * Si tiene problemas al ejecutar el codigo puede ser que su JDK ocupe actualizar.
- */
-
 
 /**
  * Clase que indica si existe o no victoria, las posiciones de las cajas, ya
@@ -23,17 +12,10 @@ import java.lang.*;
  * de Sokoban.
  */
 
-public class Sokoban{
+public class Sokoban {
 
-  /**
-   * Método que arranca el programa.
-   *
-   * @param args argumentos del programa.
-   */
 
-  Scanner input = null;
-
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
 
     /**
      * Creación de nueva instancia de la clase Sokoban.
@@ -76,70 +58,68 @@ public class Sokoban{
     String[][] tablero = new String[0][];
 
 
-
-
-      input = new Scanner(System.in);
-
-
-
-      try {
-        filas = input.nextInt();
-        columnas = input.nextInt();
-        cajas = input.nextInt();
-
-      }
-
-
-      catch(InputMismatchException e) {
-        System.out.println("Entrada invalida.");
-        System.exit(0);
-      }
-
-
-      if (filas <= 0 || columnas <= 0 || cajas <= 0){
-        System.out.println(" Entrada invalida.");
-        System.exit(0);
-      }
+    /**
+     * Método que arranca el programa.
+     *
+     * @param args argumentos del programa.
+     */
+    Scanner input = new Scanner(System.in);
 
 
 
-      input.useDelimiter("[\\s]*");
+    try {
+      filas = input.nextInt();
+      columnas = input.nextInt();
+      cajas = input.nextInt();
+
+    } catch (InputMismatchException e) {
+      System.out.println("Entrada invalida.");
+      System.exit(0);
+    }
+
+    if (filas <= 0 || columnas <= 0 || cajas <= 0) {
+      System.out.println(" Entrada invalida.");
+      System.exit(0);
+    }
 
 
 
-      tablero = new String[filas][columnas];
+    input.useDelimiter("[\\s]*");
 
-      boolean matrizValida = true;
-      for (int row = 0; row < filas; row++) {
-        for (int col = 0; col < columnas; col++) {
-          tablero[row][col] = input.next();
-          if (!(tablero[row][col].equals("#")
+
+
+    tablero = new String[filas][columnas];
+
+    boolean matrizValida = true;
+    for (int row = 0; row < filas; row++) {
+      for (int col = 0; col < columnas; col++) {
+        tablero[row][col] = input.next();
+        if (!(tablero[row][col].equals("#")
               || tablero[row][col].equals("X")
               || tablero[row][col].equals("O")
               || tablero[row][col].equals("*")
               || tablero[row][col].equals("@")
-              || tablero[row][col].equals(".") )) {
-            System.out.println("Matriz Invalida.");
-            System.exit(0);
-
-          }
+              || tablero[row][col].equals("."))) {
+          System.out.println("Matriz Invalida.");
+          System.exit(0);
         }
       }
+    }
 
 
-      System.out.printf("%10s %n","Tablero");
+    System.out.printf("%10s %n", "Tablero");
 
-      for (int row = 0; row < filas; row++) {
-        System.out.println("");
-        for (int col = 0; col < columnas; col++) {
-          System.out.printf("%3s",tablero[row][col]);
-        }
-      }
-
+    for (int row = 0; row < filas; row++) {
       System.out.println("");
+      for (int col = 0; col < columnas; col++) {
+        System.out.printf("%3s", tablero[row][col]);
+      }
+    }
+
+    System.out.println("");
 
 
-      input.close();
+    input.close();
 
 
 
@@ -170,8 +150,8 @@ public class Sokoban{
    *                los caracteres del tablero.
    */
 
-  public void posicionCajas(int filas, int columnas, int cajas,
-                            String[][] tablero) {
+  public void posicionCajas(final int filas, final int columnas, final int cajas,
+                            final String[][] tablero) {
 
     String[] coordenadasCajas = new String[cajas];
 
@@ -184,13 +164,11 @@ public class Sokoban{
 
         if (tablero[indexFila][indexColumna].equals("X")) {
           coordenadasCajas[contadorCoordenadas] =
-              String.format("r%02dc%02d* " ,indexFila, indexColumna);
+              String.format("r%02dc%02d* ", indexFila, indexColumna);
           contadorCoordenadas++;
-        }
-
-        else if (tablero[indexFila][indexColumna].equals("*")) {
+        } else if (tablero[indexFila][indexColumna].equals("*")) {
           coordenadasCajas[contadorCoordenadas] =
-              String.format("r%02dc%02d " ,indexFila, indexColumna);
+              String.format("r%02dc%02d ", indexFila, indexColumna);
           contadorCoordenadas++;
         }
       }
@@ -198,7 +176,7 @@ public class Sokoban{
 
 
     System.out.printf("%19s: ", "Cajas");
-    for (int i = 0; i < coordenadasCajas.length; i++){
+    for (int i = 0; i < coordenadasCajas.length; i++) {
       System.out.print(coordenadasCajas[i]);
     }
 
@@ -220,62 +198,60 @@ public class Sokoban{
    *                los caracteres del tablero.
    */
 
-  public void posicionCajasBloq(int filas, int columnas, int cajas,
-                                String[][] tablero){
+  public void posicionCajasBloq(final int filas, final int columnas, final int cajas,
+                                final String[][] tablero) {
 
 
 
     int cajasBloq = 0;
-    for (int row = 0; row < filas; row++){
-      for (int col = 0; col < columnas; col++){
-        if (tablero[row][col].equals("*")){
+    for (int row = 0; row < filas; row++) {
+      for (int col = 0; col < columnas; col++) {
+        if (tablero[row][col].equals("*")) {
           cajasBloq++;
         }
       }
     }
 
-    String [] coordenadaCajasBloq = new String [cajasBloq];
+    String[] coordenadaCajasBloq = new String[cajasBloq];
 
 
 
     int contadorCajasBloq = 0;
 
-    for (int row = 0; row < filas; row++){
-      for (int col = 0; col < columnas; col++){
+    for (int row = 0; row < filas; row++) {
+      for (int col = 0; col < columnas; col++) {
 
-        if (tablero[row][col].equals("*")){
+        if (tablero[row][col].equals("*")) {
 
-          if (tablero[row-1][col].equals("#")
-              && (tablero[row][col+1].equals("#")
-              || tablero[row][col-1].equals("#"))){
+          if (tablero[row - 1][col].equals("#")
+              && (tablero[row][col + 1].equals("#")
+              || tablero[row][col - 1].equals("#"))) {
             coordenadaCajasBloq[contadorCajasBloq] =
-                String.format("r%02dc%02d ",row, col);
+                String.format("r%02dc%02d ", row, col);
             contadorCajasBloq++;
-          }
-          else if (tablero[row+1][col].equals("#")
-              && (tablero[row][col+1].equals("#")
-              || tablero[row][col-1].equals("#"))) {
+          } else if (tablero[row + 1][col].equals("#")
+              && (tablero[row][col + 1].equals("#")
+              || tablero[row][col - 1].equals("#"))) {
             coordenadaCajasBloq[contadorCajasBloq] =
                 String.format("r%02dc%02d ", row, col);
             contadorCajasBloq++;
           }
 
-          if ((tablero[row-1][col].equals("*")
-              || tablero[row-1][col].equals("X"))
-              && ((tablero[row][col+1].equals("*")
-              || (tablero[row][col+1].equals("X")))
-              || (tablero[row][col-1].equals("*")
-              || tablero[row][col-1].equals("X")))){
+          if ((tablero[row - 1][col].equals("*")
+              || tablero[row - 1][col].equals("X"))
+              && ((tablero[row][col + 1].equals("*")
+              || (tablero[row][col + 1].equals("X")))
+              || (tablero[row][col - 1].equals("*")
+              || tablero[row][col - 1].equals("X")))) {
             coordenadaCajasBloq[contadorCajasBloq] =
-                String.format("r%02dc%02d ",row, col);
+                String.format("r%02dc%02d ", row, col);
             contadorCajasBloq++;
-          }
-          else if ((tablero[row+1][col].equals("*")
-              || tablero[row+1][col].equals("X"))
-              && ((tablero[row][col+1].equals("*")
-              || (tablero[row][col+1].equals("X")))
-              || (tablero[row][col-1].equals("*")
-              || tablero[row][col-1].equals("X")))) {
+          } else if ((tablero[row + 1][col].equals("*")
+              || tablero[row + 1][col].equals("X"))
+              && ((tablero[row][col + 1].equals("*")
+              || (tablero[row][col + 1].equals("X")))
+              || (tablero[row][col - 1].equals("*")
+              || tablero[row][col - 1].equals("X")))) {
             coordenadaCajasBloq[contadorCajasBloq] =
                 String.format("r%02dc%02d ", row, col);
             contadorCajasBloq++;
@@ -289,9 +265,9 @@ public class Sokoban{
 
     System.out.printf("%19s: ", "Cajas Bloqueadas");
     for (int i = 0; i < coordenadaCajasBloq.length; i++) {
-      if (coordenadaCajasBloq[i] == null)
+      if (coordenadaCajasBloq[i] == null) {
             ;
-      else{
+      } else {
         System.out.print(coordenadaCajasBloq[i]);
       }
     }
@@ -315,117 +291,110 @@ public class Sokoban{
    *                los caracteres del tablero.
    */
 
-  public void movimientosValidos (int filas, int columnas, int cajas,
-                                  String[][] tablero){
+
+  public void movimientosValidos(final int filas, final int columnas, final int cajas,
+                                 final String[][] tablero) {
 
 
-    String [] movimientosVal = new String[4];
+    String[] movimientosVal = new String[4];
 
-    for (int row = 0; row < filas; row++){
-      for (int col = 0; col < columnas; col++){
-        if (tablero[row][col].equals("@")){
+    for (int row = 0; row < filas; row++) {
+      for (int col = 0; col < columnas; col++) {
+        if (tablero[row][col].equals("@")) {
 
-          if (tablero[row-1][col].equals(".")
-              || tablero[row-1][col].equals("O")
-              || tablero[row-1][col].equals("X")
-              || tablero[row-1][col].equals("*")){
-            movimientosVal[0] = String.format("r%02dc%02d ",row-1, col);
-          }
-          else{
+          if (tablero[row - 1][col].equals(".")
+              || tablero[row - 1][col].equals("O")
+              || tablero[row - 1][col].equals("X")
+              || tablero[row - 1][col].equals("*")) {
+            movimientosVal[0] = String.format("r%02dc%02d ", row - 1, col);
+          } else {
             movimientosVal[0] = "-";
           }
 
-          if (tablero[row][col+1].equals(".")
-              || tablero[row][col+1].equals("O")
-              || tablero[row][col+1].equals("X")
-              || tablero[row][col+1].equals("*")){
-            movimientosVal[1] = String.format("r%02dc%02d ",row, col+1);
-          }
-          else{
+          if (tablero[row][col + 1].equals(".")
+              || tablero[row][col + 1].equals("O")
+              || tablero[row][col + 1].equals("X")
+              || tablero[row][col + 1].equals("*")) {
+            movimientosVal[1] = String.format("r%02dc%02d ", row, col + 1);
+          } else {
             movimientosVal[1] = "-";
           }
 
-          if (tablero[row+1][col].equals(".")
-              || tablero[row+1][col].equals("O")
-              || tablero[row+1][col].equals("X")
-              || tablero[row+1][col].equals("*")){
-            movimientosVal[2] = String.format("r%02dc%02d ",row+1, col);
-          }
-          else{
+          if (tablero[row + 1][col].equals(".")
+              || tablero[row + 1][col].equals("O")
+              || tablero[row + 1][col].equals("X")
+              || tablero[row + 1][col].equals("*")) {
+            movimientosVal[2] = String.format("r%02dc%02d ", row + 1, col);
+          } else {
             movimientosVal[2] = "-";
           }
 
-          if (tablero[row][col-1].equals(".")
-              || tablero[row][col-1].equals("O")
-              || tablero[row][col-1].equals("X")
-              || tablero[row][col-1].equals("*")){
-            movimientosVal[3] = String.format("r%02dc%02d ",row, col-1);
-          }
-          else{
+          if (tablero[row][col - 1].equals(".")
+              || tablero[row][col - 1].equals("O")
+              || tablero[row][col - 1].equals("X")
+              || tablero[row][col - 1].equals("*")) {
+            movimientosVal[3] = String.format("r%02dc%02d ", row, col - 1);
+          } else {
             movimientosVal[3] = "-";
           }
 
           if ((tablero[row - 1][col].equals("*")
-              || tablero[row-1][col].equals("X"))
-              && (tablero[row-2][col].equals("*")
-              || tablero[row-2][col].equals("X")
-              || tablero[row-2][col].equals("#")) ){
+              || tablero[row - 1][col].equals("X"))
+              && (tablero[row - 2][col].equals("*")
+              || tablero[row - 2][col].equals("X")
+              || tablero[row - 2][col].equals("#"))) {
             movimientosVal[0] = "-";
-          }
-          else if ((tablero[row - 1][col].equals("*")
-              || tablero[row-1][col].equals("X"))
-              && (tablero[row-2][col].equals(".")
-              || tablero[row-2][col].equals("O"))){
-            movimientosVal[0] = String.format("r%02dc%02d ",row-1, col);
+          } else if ((tablero[row - 1][col].equals("*")
+              || tablero[row - 1][col].equals("X"))
+              && (tablero[row - 2][col].equals(".")
+              || tablero[row - 2][col].equals("O"))) {
+            movimientosVal[0] = String.format("r%02dc%02d ", row - 1, col);
           }
 
-          if ((tablero[row ][col+1].equals("*")
-              || tablero[row][col+1].equals("X"))
-              && (tablero[row][col+2].equals("*")
-              || tablero[row][col+2].equals("X")
-              || tablero[row][col+2].equals("#")) ){
+          if ((tablero[row ][col + 1].equals("*")
+              || tablero[row][col + 1].equals("X"))
+              && (tablero[row][col + 2].equals("*")
+              || tablero[row][col + 2].equals("X")
+              || tablero[row][col + 2].equals("#"))) {
             movimientosVal[1] = "-";
-          }
-          else if ((tablero[row ][col+1].equals("*")
-              || tablero[row][col+1].equals("X"))
-              && (tablero[row][col+2].equals(".")
-              || tablero[row][col+2].equals("O"))){
-            movimientosVal[1] = String.format("r%02dc%02d ",row, col+1);
+          } else if ((tablero[row ][col + 1].equals("*")
+              || tablero[row][col + 1].equals("X"))
+              && (tablero[row][col + 2].equals(".")
+              || tablero[row][col + 2].equals("O"))) {
+            movimientosVal[1] = String.format("r%02dc%02d ", row, col + 1);
           }
 
           if ((tablero[row + 1][col].equals("*")
-              || tablero[row+1][col].equals("X"))
-              && (tablero[row+2][col].equals("*")
-              || tablero[row+2][col].equals("X")
-              || tablero[row+2][col].equals("#"))){
+              || tablero[row + 1][col].equals("X"))
+              && (tablero[row + 2][col].equals("*")
+              || tablero[row + 2][col].equals("X")
+              || tablero[row + 2][col].equals("#"))) {
             movimientosVal[2] = "-";
-          }
-          else if ((tablero[row + 1][col].equals("*")
-              || tablero[row+1][col].equals("X"))
-              && (tablero[row+2][col].equals(".")
-              || tablero[row+2][col].equals("O"))){
-            movimientosVal[3] = String.format("r%02dc%02d ",row+1, col);
+          } else if ((tablero[row + 1][col].equals("*")
+              || tablero[row + 1][col].equals("X"))
+              && (tablero[row + 2][col].equals(".")
+              || tablero[row + 2][col].equals("O"))) {
+            movimientosVal[3] = String.format("r%02dc%02d ", row + 1, col);
           }
 
-          if ((tablero[row][col-1].equals("*")
-              || tablero[row][col-1].equals("X"))
-              && (tablero[row][col-2].equals("*")
-              || tablero[row][col-2].equals("X")
-              || tablero[row][col-2].equals("#"))){
+          if ((tablero[row][col - 1].equals("*")
+              || tablero[row][col - 1].equals("X"))
+              && (tablero[row][col - 2].equals("*")
+              || tablero[row][col - 2].equals("X")
+              || tablero[row][col - 2].equals("#"))) {
             movimientosVal[3] = "-";
-          }
-          else if ((tablero[row][col-1].equals("*")
-              || tablero[row][col-1].equals("X"))
-              && (tablero[row][col-2].equals(".")
-              || tablero[row][col-2].equals("O"))){
-            movimientosVal[3] = String.format("r%02dc%02d ",row, col-1);
+          } else if ((tablero[row][col - 1].equals("*")
+              || tablero[row][col - 1].equals("X"))
+              && (tablero[row][col - 2].equals(".")
+              || tablero[row][col - 2].equals("O"))) {
+            movimientosVal[3] = String.format("r%02dc%02d ", row, col - 1);
           }
         }
       }
     }
 
     System.out.printf("Movimientos Validos: N:%s E:%s S:%s O:%s",
-        movimientosVal[0],movimientosVal[1], movimientosVal[2],
+        movimientosVal[0], movimientosVal[1], movimientosVal[2],
         movimientosVal[3]);
   }
 
@@ -444,8 +413,8 @@ public class Sokoban{
    * @param tablero Recibe una matriz de tipo {@code String[][]} que contiene
    *                los caracteres del tablero.
    */
-  public void condicionVictoria (int filas, int columnas, int cajas,
-                                 String [][] tablero) {
+  public void condicionVictoria(final int filas, final int columnas, final int cajas,
+                                 final String[][] tablero) {
 
     boolean victoria = true;
 
@@ -456,13 +425,11 @@ public class Sokoban{
         }
       }
     }
-  
-    if (victoria == false)
+    if (!victoria) {
       System.out.printf("%19s: %s", "Victoria", "No");
-
-    else if (victoria == true)
+    } else if (victoria) {
       System.out.printf("%19s: %s", "Victoria", "Si");
-
+    }
   }
 
 
