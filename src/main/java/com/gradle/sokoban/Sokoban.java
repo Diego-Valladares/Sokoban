@@ -14,7 +14,11 @@ import java.lang.*;
 
 public class Sokoban {
 
-
+  /**
+   * Método que arranca el programa.
+   *
+   * @param args Argumentos de programa.
+   */
   public static void main(final String[] args) {
 
     /**
@@ -150,8 +154,8 @@ public class Sokoban {
    *                los caracteres del tablero.
    */
 
-  public void posicionCajas(final int filas, final int columnas, final int cajas,
-                            final String[][] tablero) {
+  public void posicionCajas(final int filas, final int columnas,
+                            final int cajas,  final String[][] tablero) {
 
     String[] coordenadasCajas = new String[cajas];
 
@@ -198,8 +202,8 @@ public class Sokoban {
    *                los caracteres del tablero.
    */
 
-  public void posicionCajasBloq(final int filas, final int columnas, final int cajas,
-                                final String[][] tablero) {
+  public void posicionCajasBloq(final int filas, final int columnas,
+                                final int cajas, final String[][] tablero) {
 
 
 
@@ -292,8 +296,8 @@ public class Sokoban {
    */
 
 
-  public void movimientosValidos(final int filas, final int columnas, final int cajas,
-                                 final String[][] tablero) {
+  public void movimientosValidos(final int filas, final int columnas,
+                                 final int cajas, final String[][] tablero) {
 
 
     String[] movimientosVal = new String[4];
@@ -413,8 +417,8 @@ public class Sokoban {
    * @param tablero Recibe una matriz de tipo {@code String[][]} que contiene
    *                los caracteres del tablero.
    */
-  public void condicionVictoria(final int filas, final int columnas, final int cajas,
-                                 final String[][] tablero) {
+  public void condicionVictoria(final int filas, final int columnas,
+                                final int cajas, final String[][] tablero) {
 
     boolean victoria = true;
 
