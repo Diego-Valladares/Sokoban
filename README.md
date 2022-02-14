@@ -79,14 +79,20 @@ encuentra en la matriz que representa el tablero, valores faltantes, símbolos u
 que no son los que se mencionan en la tabla de simbolos, el programa debe imprimir “matriz invalida”.
 
 
-Tambien hay que tomar en cuenta que el usuario de este programa debe cambiar internamente (dentro del Sokoban.java) cual caso de prueba se va a ejecutar. Por defecto se corre
-el caso de prueba "input000.txt" de la carpeta tests, para modificarlo se tendria que modificar "File doc = new File("#######.txt")" ubicado en el metodo "leerDoc", reemplazando
-los "####" por el nombre del archivo de texto deseado. 
+### Como correr el programa
+Para ejecutar el programa abra la carpeta "libs" (Sokoban\build\libs\) utilizando la consola.
+- En windows seria: Boton windows + R
+- Escribir cmd.exe y luego run
+- Escribir dentro de la consola "cd ..\Sokoban\build\libs"
+
+Luego escribir el comando "java -jar Sokoban-1.0.jar < ../../tests/input000.txt".
+Esto ejecutara el caso de prueba deseado.
+Si tiene problemas al ejecutar el codigo puede ser que su JDK ocupe actualizar. 
 
 ## Creditos
 
 Diego Valladares: diego.valladaresbermudez@ucr.ac.cr
 
-Sebastian Jimenez Camacho: 
+Sebastian Jimenez Camacho: sebastian.jimenezcamacho@ucr.ac.cr
 
 
