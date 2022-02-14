@@ -92,13 +92,12 @@ public class Sokoban{
 
       catch(InputMismatchException e) {
         System.out.println("Entrada invalida.");
-        e.printStackTrace();
         System.exit(0);
       }
 
 
       if (filas <= 0 || columnas <= 0 || cajas <= 0){
-        System.out.println("Entrada invalida.");
+        System.out.println(" Entrada invalida.");
         System.exit(0);
       }
 
