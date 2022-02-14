@@ -373,7 +373,10 @@ public class Sokoban{
               || tablero[row-2][col].equals("#")) ){
             movimientosVal[0] = "-";
           }
-          else{
+          else if ((tablero[row - 1][col].equals("*")
+              || tablero[row-1][col].equals("X"))
+              && (tablero[row-2][col].equals(".")
+              || tablero[row-2][col].equals("O"))){
             movimientosVal[0] = String.format("r%02dc%02d ",row-1, col);
           }
 
@@ -384,7 +387,10 @@ public class Sokoban{
               || tablero[row][col+2].equals("#")) ){
             movimientosVal[1] = "-";
           }
-          else{
+          else if ((tablero[row ][col+1].equals("*")
+              || tablero[row][col+1].equals("X"))
+              && (tablero[row][col+2].equals(".")
+              || tablero[row][col+2].equals("O"))){
             movimientosVal[1] = String.format("r%02dc%02d ",row, col+1);
           }
 
@@ -395,8 +401,11 @@ public class Sokoban{
               || tablero[row+2][col].equals("#"))){
             movimientosVal[2] = "-";
           }
-          else{
-            movimientosVal[2] = String.format("r%02dc%02d ",row+1, col);
+          else if ((tablero[row + 1][col].equals("*")
+              || tablero[row+1][col].equals("X"))
+              && (tablero[row+2][col].equals(".")
+              || tablero[row+2][col].equals("O"))){
+            movimientosVal[3] = String.format("r%02dc%02d ",row+1, col);
           }
 
           if ((tablero[row][col-1].equals("*")
@@ -406,11 +415,12 @@ public class Sokoban{
               || tablero[row][col-2].equals("#"))){
             movimientosVal[3] = "-";
           }
-          else{
+          else if ((tablero[row][col-1].equals("*")
+              || tablero[row][col-1].equals("X"))
+              && (tablero[row][col-2].equals(".")
+              || tablero[row][col-2].equals("O"))){
             movimientosVal[3] = String.format("r%02dc%02d ",row, col-1);
           }
-
-
         }
       }
     }
